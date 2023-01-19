@@ -2,13 +2,27 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col,Row,Table, Button, Container, Modal, ModalBody, ModalHeader, FormGroup, ModalFooter} from 'react-bootstrap';
-import React from 'react';
+  import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+  } from 'reactstrap';
+import React, { useState } from 'react';
+
 
 const data= [
   {id:1, personaje:"carlos acevedo", cc:103629343, celular:"3046758241"},
   {id:2, personaje:"Deiby Graciano", cc:103629344, celular:"3046758242"},
   {id:3, personaje:"Andres perez", cc:103629345, celular:"3046758243"},
   {id:4, personaje:"Luis Hincapie", cc:103629346, celular:"3046758244"},
+  {id:5, personaje:"carlos acevedo", cc:103629343, celular:"3046758241"},
+  {id:6, personaje:"Deiby Graciano", cc:103629344, celular:"3046758242"},
+  {id:7, personaje:"Andres perez", cc:103629345, celular:"3046758243"},
+  {id:8, personaje:"Luis Hincapie", cc:103629346, celular:"3046758244"},
 ];
 
 
@@ -159,16 +173,45 @@ let eliminar=(dato)=>{
   }
 }
 
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <React.Fragment>
       <Row >
-    <Col sm={2} className='bg-dark text-light '>
-     <ul><b><h6 className='pb-2 pt-3'>Parqueadero</h6></b></ul>
-     <ul>📅 <a href="#">Tablero</a></ul>
-     <ul>👥 <a href="#">Usuarios</a></ul>
-     <ul>📊<a href="#">Estadisticas</a></ul>
-     <ul>👤 <a href="#">Perfil</a></ul>
-     <ul>⚙️ <a href="#">Ajustes</a></ul>
+    <Col sm="auto" className='bg-success text-light '>
+  <div>
+    <Navbar color="faded" light>
+      <NavbarBrand href="/" className="me-auto">
+
+      </NavbarBrand>
+      <NavbarToggler onClick={toggleNavbar} className="me-2" />
+      <Collapse isOpen={!collapsed} navbar>
+        <Nav navbar>
+          <NavItem>
+            <NavLink href="/components/">
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#">
+            📅 <a><b>Tablero</b></a> <br></br>
+            </NavLink>
+            <NavLink>
+              👥 <a ><b>Usuarios</b></a><br></br>   
+            </NavLink>
+            <NavLink>     
+              📊<a><b>Estadisticas</b></a><br></br></NavLink>
+            <NavLink>  
+                    👤 <a><b>Perfil</b></a><br></br></NavLink>
+            <NavLink>  
+              ⚙️ <a><b>Ajustes</b></a></NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  </div>
+
+
     </Col>
 
    
