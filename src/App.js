@@ -11,23 +11,72 @@ import {Col,Row,Table, Button, Container, Modal, ModalBody, ModalHeader, FormGro
     NavItem,
     NavLink,
   } from 'reactstrap';
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 
-
-const data= [
-  {id:1, personaje:"carlos acevedo", cc:103629343, celular:"3046758241"},
-  {id:2, personaje:"Deiby Graciano", cc:103629344, celular:"3046758242"},
-  {id:3, personaje:"Andres perez", cc:103629345, celular:"3046758243"},
-  {id:4, personaje:"Luis Hincapie", cc:103629346, celular:"3046758244"},
-  {id:5, personaje:"carlos acevedo", cc:103629343, celular:"3046758241"},
-  {id:6, personaje:"Deiby Graciano", cc:103629344, celular:"3046758242"},
-  {id:7, personaje:"Andres perez", cc:103629345, celular:"3046758243"},
-  {id:8, personaje:"Luis Hincapie", cc:103629346, celular:"3046758244"},
-];
 
 
 
 function App() {
+
+  const [data, setData] = useState([]);
+  const [idFetch, setidFetch]= useState()
+
+
+  useEffect(()=>{
+ fetch('https://django-deiby.herokuapp.com/')
+    .then(response => response.json())
+    .then(data => setData(data))
+}, [idFetch]);
+
+const [dataApp, setDataApp] = useState();
+const [response, setResponse] = useState({});
+useEffect(()=>{
+  postData(dataApp)
+},[dataApp])
+
+  async function postData(datosd) {
+    try {
+      const res = await fetch('https://django-deiby.herokuapp.com/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosd)
+      });
+      const json = await res.json();
+      setResponse(json);
+    } catch (error) {
+      setResponse({ error });
+    }
+  }
+
+  const [deleteApp, deleteDataApp] = useState();
+  const [status, setStatus] = useState();
+  useEffect(() => {
+    fetch(`https://django-deiby.herokuapp.com/${deleteApp}`, { method: 'DELETE' })
+        .then(() => setStatus('Delete successful'));
+}, [deleteApp]);
+
+const [editApp, setEditApp] = useState();
+const [editId, setEditId]= useState();
+useEffect(()=>{
+  editData(editApp,editId)
+},[editApp],[editId])
+
+async function editData(datos,id) {
+fetch(`https://django-deiby.herokuapp.com/${id}`, {
+  method: 'PUT',
+  body: JSON.stringify(datos),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+}
+
+
+
+
+
   let [state,values]=React.useState(
     {
       data:data,
@@ -43,7 +92,7 @@ function App() {
     } 
   )
 
- console.log(state)
+
 let handleChange=e=>{
   values({
     modalInsertar:true,
@@ -73,6 +122,20 @@ let handleChangeE=event=>{
 
 
 const mostrarModalInsertar=()=>{
+  let valorNuevo={...state.form}
+  try{
+    valorNuevo.id=data[data.length-1].id+1
+  }catch{
+    console.log("no hay campos")
+    setDataApp({personaje:'agregar otro', cc:'dato antes de', celular:'borrar este'})
+    window.location.reload()
+  }
+
+  
+  
+
+  setidFetch(valorNuevo.id)
+
   values(
     {
       data:data,
@@ -86,8 +149,6 @@ const mostrarModalInsertar=()=>{
       modalInsertar: true,
       modalEditar:false,
     } )
-  
-
 }
 const ocultarModalInsertar=()=>{
   values( {
@@ -110,6 +171,8 @@ const mostrarModalEditar=(registro)=>{
     form:registro,
     modalEditar: true,
     })
+  
+    setDatoId(registro.id)
 
 }
 const ocultarModalEditar=()=>{
@@ -132,21 +195,32 @@ let insertar=()=>{
 
 let valorNuevo={...state.form}
 
-valorNuevo.id=data.length+1
+valorNuevo.id=data[data.length-1].id+1
+
 let nuevo=data.push(valorNuevo);
 values({
     data:nuevo,
     form:valorNuevo,
 
-  } )
+  } ) 
+  //let valorN={...data}
+ // valorN.id=data.length+1
+  console.log(valorNuevo)
+  //setidFetch(valorNuevo.id)
+ // delete (valorNuevo.id)
+  setDataApp(valorNuevo)
+ // console.log(dataApp)
+
+
 
 
 }
 
 let editar=(dato)=>{
+
   let contador=0;
   let lista=data;
-  console.log(lista)
+  
   lista.map((registro)=>{
     if(dato.id==registro.id){
       lista[contador].personaje=dato.personaje;
@@ -155,7 +229,13 @@ let editar=(dato)=>{
     }
     contador++;
   });
+  console.log(dato)  
   values({data: lista,form:dato});
+  setEditId(dato.id)
+  setDatoId(dato.id)
+  delete(dato.id)
+  setEditApp(dato)
+ 
 }
 
 let eliminar=(dato)=>{
@@ -166,6 +246,8 @@ let eliminar=(dato)=>{
     lista.map((registro)=>{
       if(registro.id==dato.id){
       lista.splice(contador,1);
+      deleteDataApp(registro.id)
+      console.log(deleteApp)
     }
       contador++;
     })
@@ -175,6 +257,18 @@ let eliminar=(dato)=>{
 
   const [collapsed, setCollapsed] = useState(true);
 
+
+ const [datoId, setDatoId]= useState()
+
+useEffect(()=>{
+addId2(datoId)
+ },[datoId])
+
+ function addId2(dato){
+
+    setDatoId(dato)
+ }
+  
   const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <React.Fragment>
@@ -254,7 +348,7 @@ let eliminar=(dato)=>{
     <ModalBody>
       <FormGroup>
       <label>Id:</label>
-      <input className='form-control' name='id' readOnly type='text' value={data.length+1} onChange={true}></input>
+      <input className='form-control' name='id' readOnly type='text' value={idFetch} onChange={true}></input>
       </FormGroup>
 
       <FormGroup>
@@ -289,7 +383,7 @@ let eliminar=(dato)=>{
     <ModalBody>
       <FormGroup>
       <label>Id:</label>
-      <input className='form-control' name='id' readOnly type='text' value={state.form.id} ></input>
+      <input className='form-control' name='id' readOnly type='text' value={datoId} ></input>
       </FormGroup>
 
       <FormGroup>
