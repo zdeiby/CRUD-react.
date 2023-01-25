@@ -9,9 +9,11 @@ puedes usarla sin inconveniente
 <img width="619" alt="image" src="https://user-images.githubusercontent.com/111442309/214464527-5252c8b5-1343-4fe6-babf-5a83d9bbfd00.png">
 
 editar:
+
 <img width="415" alt="image" src="https://user-images.githubusercontent.com/111442309/214464589-d6ef8221-d7b0-4b6d-ba44-a6e2ebb166fc.png">
 
 crear:
+
 <img width="398" alt="image" src="https://user-images.githubusercontent.com/111442309/214464629-465bf757-512d-46b0-a404-b60fa6940faf.png">
 
 eliminar:
