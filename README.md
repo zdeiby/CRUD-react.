@@ -1,5 +1,24 @@
 # To view the proyect visit: https://appdeiby.herokuapp.com
 
+CRUD con consumo de API REST creada con Django y bases de datos sqlite3,para descargarse el programa completo descargar el backend visitando este repositorio: https://github.com/zdeiby/api-rest-django
+
+o puedes usar la API en la web desde este sitio: https://django-deiby.herokuapp.com/
+
+puedes usarla sin inconveniente
+
+<img width="619" alt="image" src="https://user-images.githubusercontent.com/111442309/214464527-5252c8b5-1343-4fe6-babf-5a83d9bbfd00.png">
+
+editar:
+<img width="415" alt="image" src="https://user-images.githubusercontent.com/111442309/214464589-d6ef8221-d7b0-4b6d-ba44-a6e2ebb166fc.png">
+
+crear:
+<img width="398" alt="image" src="https://user-images.githubusercontent.com/111442309/214464629-465bf757-512d-46b0-a404-b60fa6940faf.png">
+
+eliminar:
+
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/111442309/214464679-d2cc3159-c3cd-4c0c-b09a-64fc603b1428.png">
+
+
 
 Getting Started with Create React App
 
