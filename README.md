@@ -6,20 +6,15 @@ o puedes usar la API en la web desde este sitio: https://django-deiby.herokuapp.
 
 puedes usarla sin inconveniente
 
-<img width="619" alt="image" src="https://user-images.githubusercontent.com/111442309/214464527-5252c8b5-1343-4fe6-babf-5a83d9bbfd00.png">
+<img width="596" alt="image" src="https://user-images.githubusercontent.com/111442309/214739542-fee44266-3bc2-40ee-8f2a-0f8a2d6aba1a.png">
 
-editar:
 
-<img width="415" alt="image" src="https://user-images.githubusercontent.com/111442309/214464589-d6ef8221-d7b0-4b6d-ba44-a6e2ebb166fc.png">
+<img width="668" alt="image" src="https://user-images.githubusercontent.com/111442309/214739801-0cbf4a97-62a4-4dd7-8cdd-0307ff46590d.png">
 
-crear:
 
-<img width="398" alt="image" src="https://user-images.githubusercontent.com/111442309/214464629-465bf757-512d-46b0-a404-b60fa6940faf.png">
+<img width="614" alt="image" src="https://user-images.githubusercontent.com/111442309/214739891-18269a60-abe7-4357-b5fb-2634d639e768.png">
 
-eliminar:
-
-<img width="404" alt="image" src="https://user-images.githubusercontent.com/111442309/214464679-d2cc3159-c3cd-4c0c-b09a-64fc603b1428.png">
-
+<img width="665" alt="image" src="https://user-images.githubusercontent.com/111442309/214739934-f5c47070-96d8-49bb-919d-85582ffd3235.png">
 
 
 Getting Started with Create React App
