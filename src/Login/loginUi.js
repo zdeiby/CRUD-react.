@@ -1,86 +1,96 @@
+
 import React,{ useState ,useEffect}  from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col,Row,Table, Button, Container, Modal, ModalBody, ModalHeader, FormGroup, ModalFooter} from 'react-bootstrap';
-import image from "./peakpx.jpg"
-import logotipe from "./logtipo.jpg"
+import {Col,Row, Button, Container} from 'react-bootstrap';
+import image from "../Img/peakpx.jpg"
+import logotipe from "../Img/logtipo.jpg"
 import  "./login.css"
 import { Link } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
+import { Inicio } from "../Inicio";
 
-function Login(){
-
-    const [data, setData] = useState([]);
-
-    useEffect(()=>{
-   fetch('https://django-deiby.herokuapp.com/')
-      .then(response => response.json())
-      .then(data => setData(data))
-  }, []);
-
-
-
-let [state, values]= React.useState({
-    data:data,
-    form:{
-        cc:'',
-        celular:'',
-    }
-})
-
-
-
-const [ok, setOK] = React.useState()
-useEffect(()=>{
-   
-},[ok])
-let handleChange=e=>{
-   let datos={form:{
-        ...state.form,
-        [e.target.name]:e.target.value,
-    }}
-    values({
-        
-    data:data,
-      form:{   
-      ...state.form,
-      [e.target.name]:e.target.value,
+function LoginUI(){
   
-      }
+        const [nameLogin,setNameLogin] = React.useState('desconocido')
+    
+
+        const [data, setData] = useState([]);
+    
+        useEffect(()=>{
+       fetch('https://django-deiby.herokuapp.com/')
+          .then(response => response.json())
+          .then(data => setData(data))
+      }, []);
+    
+    
+    
+    let [state, values]= React.useState({
+        data:data,
+        form:{
+            cc:'',
+            celular:'',
+        }
     })
-
-
-    let lista=state.data
-    let formulario=datos.form
-    console.log(datos)
-    console.log(lista)
-    for(let i=0; i<lista.length;i++){
-        if(formulario.celular == lista[i].celular){
-           if(formulario.cc == lista[i].cc){
-           setOK('/home')
-            console.log(ok)
+    
+    
+    
+    const [ok, setOK] = React.useState()
+    useEffect(()=>{
+       
+    },[ok])
+    
+    
+    let handleChange=e=>{
+       let datos={form:{
+            ...state.form,
+            [e.target.name]:e.target.value,
+        }}
+        values({
+            
+        data:data,
+          form:{   
+          ...state.form,
+          [e.target.name]:e.target.value,
+      
+          }
+        })
+    
+    
+        let lista=state.data
+        let formulario=datos.form
+        console.log(datos)
+        console.log(lista)
+        for(let i=0; i<lista.length;i++){
+            if(formulario.celular == lista[i].celular){
+               if(formulario.cc == lista[i].cc){
+                 setNameLogin(lista[i].personaje)
+                 localStorage.setItem('nombre', lista[i].personaje)
+                console.log(nameLogin)
+               setOK('/inicio')
+                console.log(ok)
+               
+               }
+            }
+            else {
+               
+            }
            }
-        }
-        else {
-           
-        }
-       }
-  
-  }
-
-const [show, setShow] = useState(false);
-
-function validacion(){
- console.log(ok)
- if(ok != '/home'){
-    console.log("mal")
-    setShow(true)
- }
-   
-}
-
-
+      
+      }
+    
+    const [show, setShow] = useState(false);
+    
+    function validacion(){
+     console.log(ok)
+     if(ok != '/inicio'){
+        console.log("mal")
+        setShow(true)
+     }
+       
+    }
     return(
-    <React.Fragment >
+        <React.Fragment >
+     
           <Alert show={show} variant="success">
         <Alert.Heading>Datos Erroneos</Alert.Heading>
         <p>
@@ -117,6 +127,7 @@ function validacion(){
         </Container>
     </React.Fragment>
     )
+    
 }
 
-export default Login;
+export {LoginUI}
