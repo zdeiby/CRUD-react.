@@ -6,15 +6,13 @@ o puedes usar la API en la web desde este sitio: https://django-deiby.herokuapp.
 
 puedes usarla sin inconveniente
 
-<img width="596" alt="image" src="https://user-images.githubusercontent.com/111442309/214739542-fee44266-3bc2-40ee-8f2a-0f8a2d6aba1a.png">
+<img width="944" alt="image" src="https://user-images.githubusercontent.com/111442309/215680174-f7b10e9d-9fee-45b9-a1c3-e88d6bcd6960.png">
 
+<img width="674" alt="image" src="https://user-images.githubusercontent.com/111442309/215680260-1453fa99-92cc-46d3-a1fe-00c3fbb5b547.png">
 
-<img width="668" alt="image" src="https://user-images.githubusercontent.com/111442309/214739801-0cbf4a97-62a4-4dd7-8cdd-0307ff46590d.png">
+<img width="587" alt="image" src="https://user-images.githubusercontent.com/111442309/215680296-26450098-4ac9-40ad-aab0-8196c2308039.png">
 
-
-<img width="614" alt="image" src="https://user-images.githubusercontent.com/111442309/214739891-18269a60-abe7-4357-b5fb-2634d639e768.png">
-
-<img width="665" alt="image" src="https://user-images.githubusercontent.com/111442309/214739934-f5c47070-96d8-49bb-919d-85582ffd3235.png">
+<img width="493" alt="image" src="https://user-images.githubusercontent.com/111442309/215680366-e6eae4ba-57e6-490b-9dd9-73e57c719c20.png">
 
 
 Getting Started with Create React App
