@@ -1,10 +1,11 @@
 import React , { useState ,useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col,Row, Button, Container} from 'react-bootstrap';
-//import image from "./peakpx.jpg"
-import logotipe from "../Img/logtipo.jpg"
-import  "../Login/login.css"
+import {Col,Row,Table, Button, Container, Modal, ModalBody, ModalHeader, FormGroup, ModalFooter} from 'react-bootstrap';
+import image from "./peakpx.jpg"
+import logotipe from "./logtipo.jpg"
+import  "./login.css"
 import { Link } from "react-router-dom";
+import Alerta from "./alert"
 import Alert from 'react-bootstrap/Alert';
 
 function Register(){
